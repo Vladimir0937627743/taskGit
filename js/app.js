@@ -1,14 +1,13 @@
 var li = document.querySelectorAll("li");
 var div = document.querySelectorAll(".characteristic");
 for (var i = 0; i < li.length; i++) {
-   (function(a,iterator){
+   (function(a,iterator) {
            a.onclick = function() {
-                 div[iterator].classList.add("active");
-               div[iterator -1].classList.remove("active");
-               div[iterator +1].classList.remove("active");
-            }
-
-
+               for (var outclass = 0; outclass < li.length; outclass++) {
+                   div[outclass].classList.remove("active");
+               }
+               div[iterator].classList.add("active");
+           }
    }(li[i], i));
 }
 //changesfor (var j = 0; j < li.length; j++) {
