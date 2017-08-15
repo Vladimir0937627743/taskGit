@@ -12,6 +12,12 @@
 .content {
     background: #dedede;
 }
+
+
+.characteristic {
+    display: none;
+}
 .active {
     display: block;
 }
+

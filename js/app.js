@@ -1,13 +1,16 @@
-//var li = document.querySelectorAll("li");
-//var div = document.querySelectorAll(".characteristic");
-//for (var i = 0; i < li.length; i++) {
- //   (function(a){
- //       a.onclick = function() {
-//            a.classList.add("active");
-//        }
-//
-//    }(li[i]));
-//}
+var li = document.querySelectorAll("li");
+var div = document.querySelectorAll(".characteristic");
+for (var i = 0; i < li.length; i++) {
+   (function(a,iterator){
+           a.onclick = function() {
+                 div[iterator].classList.add("active");
+               div[iterator -1].classList.remove("active");
+               div[iterator +1].classList.remove("active");
+            }
+
+
+   }(li[i], i));
+}
 //changesfor (var j = 0; j < li.length; j++) {
 //li[j].classList.remove("active");
 //}
@@ -20,7 +23,7 @@
   //  div[d].classList.add("active");
 //}
 //}
-var li = document.querySelectorAll("li");
-li.onclick = function() {
-   alert("hello");
-};
+//var li = document.querySelectorAll("li");
+//li.onclick = function() {
+//   alert("hello");
+//};
