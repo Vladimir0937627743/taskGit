@@ -14,10 +14,12 @@
 }
 
 
-.characteristic {
-    display: none;
+/*.characteristic {*/
+    /*display: none;*/
+/*}*/
+/*.active {*/
+    /*display: block;*/
+/*}*/
+h2 {
+    color: #5ba982;
 }
-.active {
-    display: block;
-}
-
