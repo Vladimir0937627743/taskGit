@@ -15,7 +15,6 @@ var myText = [{
 
     h3: "Консоль разработчика",
     p: "4.Пункт Консоль разработчика в кратце рассказывает нам на что стоит обратить внимание при проверке кода через консоль."
-
     }]
 } , {
     title: "Основы JavaScript",
@@ -117,9 +116,11 @@ for (var i = 0; i < li.length; i++) {
             }
 
             var fragment = document.createDocumentFragment();
-            var paragraph = document.createElement("p");
+			var paragraph = document.createElement("h2");
             paragraph.innerHTML = myText[iterator].title;
-            if ((typeof myText[iterator].p) == "object") {
+            fragment.appendChild(paragraph);
+			
+			if ((typeof myText[iterator].p) == "object") {
                 for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
                     var h3 = document.createElement("h3");
                     h3.innerHTML = myText[iterator].p[alternative].h3;
@@ -129,7 +130,18 @@ for (var i = 0; i < li.length; i++) {
                     fragment.appendChild(p);
                 }
             }
-            fragment.appendChild(paragraph);
+			if ((typeof myText[iterator].p) === "string") {
+                for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
+                    var h3 = document.createElement("h3");
+                    h3.innerHTML = myText[iterator].title;
+                    var p = document.createElement("p");
+                    p.innerHTML = myText[iterator].p;
+				}
+                    fragment.appendChild(h3);
+                    fragment.appendChild(p);
+            }
+			
+            
 
             contentBarContainer.appendChild(fragment);
 
