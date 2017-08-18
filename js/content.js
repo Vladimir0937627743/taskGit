@@ -1,5 +1,5 @@
 var myText = [{
-    title: 'Введение',
+    h2: 'Введение',
     p: [{
         h3: 'Введение в JavaScript',
         p: '1.Введение в JavaScript дает нам общее понятие о создании, общей истории и развити JavaScript'
@@ -17,7 +17,7 @@ var myText = [{
         p: "4.Пункт Консоль разработчика в кратце рассказывает нам на что стоит обратить внимание при проверке кода через консоль."
     }]
 }, {
-    title: "Основы JavaScript",
+    h2: "Основы JavaScript",
     p: [{
 
         h3: "Привет мир!",
@@ -60,7 +60,7 @@ var myText = [{
         p: "Данный ряд статей нам рассказывает о том, как грамотно создавать и использовать функции и с их помощью делать клиентскую сторону более динамичной."
     }]
 }, {
-    title: "Качество кода",
+    h2: "Качество кода",
     p: [{
         h3: "Отладка в chrome",
         p: "В данном пункте нам рассказывается о корректном тестировании кода, его шифровании и отладке в браузере. О том, куда стоит обратить внимание при работе с данным браузером."
@@ -75,24 +75,24 @@ var myText = [{
         p: "С данной главой я рекомендовал бы ознакомиться в начале своей деятельности как програмиста. Ведь писочницу можно использовать как тесты (которые гарантируют правильность кода),документацию по функциям и описанию их конкретных задач"
     }]
 }, {
-    title: "Структуры данных",
+    h2: "Структуры данных",
     p: "В данной главе автор знакомит нас юолее подробно с типами данных и рассказывает нам о том, как более широко можно использовать и преобразовывать их."
 }, {
-    title: "Замыкания",
+    h2: "Замыкания",
     p: "Данная глава открывает нам новые возможности функций (в частности замыкания), и рассказывает, как можно использовать разные функии внутри функций а так же как повысить их функциональность и как управлять памятью"
 }, {
-    title: "Методы объектов",
+    h2: "Методы объектов",
     p: "В данном разделе мы узнаем о новом виде функций-конструкторах. Нам пишут о том, как отличить их в обычном коде(написание с большой буквы). Также мы узнаем о различных методах(статических/фабричных) с кратким описанием их функционала и мер использования."
 }, {
-    title: "другие возможности",
+    h2: "другие возможности",
     p: "Этот раздел знакомит нас с такими функциями как setTimeout и setInterval которые позволяют управлять нам временем выведения результатов и не только. Так же ассказывается о преобразователях в строку и обратно на основе json"
 }, {
-    title: "ООП в функциональном стиле",
+    h2: "ООП в функциональном стиле",
     p: "Данные статьи дают нам краткое понятие о таких функциях как гетер и сетер. Которые выполняют такие действия как - геттер возвращает значение, сеттер – устанавливает"
 }, {
-    title: "ООП в прототипном стиле"
+    h2: "ООП в прототипном стиле"
 }, {
-    title: "Современные возможности ES-2015",
+    h2: "Современные возможности ES-2015",
     p: "Современные возможности ES-2015"
 }
 ];
@@ -104,6 +104,7 @@ var contentBarContainer = document.querySelector("#contentBar");
 for (var i = 0; i < li.length; i++) {
     (function (a, iterator) {
         a.onclick = function () {
+
             /**
              * Clear element before appending new child
              */
@@ -111,12 +112,10 @@ for (var i = 0; i < li.length; i++) {
                 contentBarContainer.removeChild(contentBarContainer.firstChild);
             }
             var fragment = document.createDocumentFragment();
-            fragment.appendChild(createHtmlElement("h2", myText[iterator].title));
-
+            fragment.appendChild(createHtmlElement("h2", myText[iterator].h2));
             if (Array.isArray(myText[iterator].p) === true) {
                 for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
-                    fragment.appendChild(createHtmlElement("h3", myText[iterator].p[alternative].h3));
-                    fragment.appendChild(createHtmlElement("p", myText[iterator].p[alternative].p));
+                    createHtmlAssembly(myText[iterator], myText[iterator].p[iterator]);
                 }
             }   else if ((typeof myText[iterator].p) === "string") {
                 fragment.appendChild(createHtmlElement("p", myText[iterator].p));
@@ -124,10 +123,15 @@ for (var i = 0; i < li.length; i++) {
             contentBarContainer.appendChild(fragment);
         }
     }(li[i], i));
-}
-;
+};
 function createHtmlElement (tag, text) {
     var elem = document.createElement(tag);
     elem.innerHTML = text;
     return elem;
+};
+function createHtmlAssembly (tag, elem) {
+    for (tag in elem) {
+        fragment.appendChild(createHtmlElement("tag", elem)
+        return fragment;
+    };
 };
