@@ -117,8 +117,6 @@ for (var i = 0; i < li.length; i++) {
                 for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
                     createHtmlAssembly(myText[iterator].p[alternative], fragment);
                 }
-            }   else if ((typeof myText[iterator].p) === "string") {
-                createHtmlAssembly(myText[iterator].p[alternative], fragment);
             }
             contentBarContainer.appendChild(fragment);
         }
@@ -132,6 +130,5 @@ function createHtmlElement (tag, text) {
 function createHtmlAssembly (tagName, fragment) {
     for (elem in tagName) {
         fragment.appendChild(createHtmlElement (elem, tagName[elem]));
-        return fragment;
     };
 };
