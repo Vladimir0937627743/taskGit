@@ -104,7 +104,6 @@ var contentBarContainer = document.querySelector("#contentBar");
 for (var i = 0; i < li.length; i++) {
     (function (a, iterator) {
         a.onclick = function () {
-
             /**
              * Clear element before appending new child
              */
@@ -112,7 +111,7 @@ for (var i = 0; i < li.length; i++) {
                 contentBarContainer.removeChild(contentBarContainer.firstChild);
             }
             var fragment = document.createDocumentFragment();
-            createHtmlAssembly (myText[iterator] , fragment);
+            createHtmlAssembly(myText[iterator], fragment);
             if (Array.isArray(myText[iterator].p) === true) {
                 for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
                     createHtmlAssembly(myText[iterator].p[alternative], fragment);
@@ -129,6 +128,8 @@ function createHtmlElement (tag, text) {
 };
 function createHtmlAssembly (tagName, fragment) {
     for (elem in tagName) {
-        fragment.appendChild(createHtmlElement (elem, tagName[elem]));
+        if (Array.isArray(tagName[elem]) === false) {
+            fragment.appendChild(createHtmlElement(elem, tagName[elem]));
+        }
     };
 };
