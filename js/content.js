@@ -112,14 +112,13 @@ for (var i = 0; i < li.length; i++) {
                 contentBarContainer.removeChild(contentBarContainer.firstChild);
             }
             var fragment = document.createDocumentFragment();
-            fragment.appendChild(createHtmlElement("h2", myText[iterator].h2));
+            createHtmlAssembly (myText[iterator] , fragment);
             if (Array.isArray(myText[iterator].p) === true) {
                 for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
-                    createHtmlAssembly (elem, myText[iterator].p[alternative]);
-                    createHtmlAssembly (elem, myText[iterator].p[alternative]);
+                    createHtmlAssembly(myText[iterator].p[alternative], fragment);
                 }
             }   else if ((typeof myText[iterator].p) === "string") {
-                fragment.appendChild(createHtmlElement("p", myText[iterator].p));
+                createHtmlAssembly(myText[iterator].p[alternative], fragment);
             }
             contentBarContainer.appendChild(fragment);
         }
@@ -130,9 +129,9 @@ function createHtmlElement (tag, text) {
     elem.innerHTML = text;
     return elem;
 };
-function createHtmlAssembly (tagName, elem) {
+function createHtmlAssembly (tagName, fragment) {
     for (elem in tagName) {
-        fragment.appendChild(createHtmlElement(tagName, elem));
+        fragment.appendChild(createHtmlElement (elem, tagName[elem]));
         return fragment;
     };
 };
