@@ -115,7 +115,8 @@ for (var i = 0; i < li.length; i++) {
             fragment.appendChild(createHtmlElement("h2", myText[iterator].h2));
             if (Array.isArray(myText[iterator].p) === true) {
                 for (var alternative = 0; alternative < myText[iterator].p.length; alternative++) {
-                    createHtmlAssembly(myText[iterator], myText[iterator].p[iterator]);
+                    createHtmlAssembly (elem, myText[iterator].p[alternative]);
+                    createHtmlAssembly (elem, myText[iterator].p[alternative]);
                 }
             }   else if ((typeof myText[iterator].p) === "string") {
                 fragment.appendChild(createHtmlElement("p", myText[iterator].p));
@@ -129,9 +130,9 @@ function createHtmlElement (tag, text) {
     elem.innerHTML = text;
     return elem;
 };
-function createHtmlAssembly (tag, elem) {
-    for (tag in elem) {
-        fragment.appendChild(createHtmlElement("tag", elem)
+function createHtmlAssembly (tagName, elem) {
+    for (elem in tagName) {
+        fragment.appendChild(createHtmlElement(tagName, elem));
         return fragment;
     };
 };
